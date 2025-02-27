@@ -54,6 +54,12 @@ const FlowEditor = () => {
         event.dataTransfer.dropEffect = 'move';
     };
 
+    // Clear workspace
+    const clearSpace = async () => {
+        setNodes((nds) => []);
+        setNodeId((id) => 1);
+    };
+
     // Run connected test cases in order
     const runTestFlow = async () => {
         const testFlow = nodes.map((node) => node.data.label);
@@ -82,6 +88,10 @@ const FlowEditor = () => {
                 ))}
                 <button onClick={runTestFlow} style={{ marginTop: '20px', padding: '10px', backgroundColor: '#4caf50', color: 'white' }}>
                     Run Test
+                </button>
+
+                <button onClick={clearSpace} style={{ marginTop: '20px', marginLeft: '5px', padding: '10px', backgroundColor: '#e74c3c', color: 'white' }}>
+                    Clear
                 </button>
             </aside>
 
