@@ -22,6 +22,7 @@ This app is a proof of concept web application for end-to-end UI testing using P
 **Pre-Requisites**
 
 Must have [Node.js](https://nodejs.org/en/download) installed
+
 Can verify Node is installed by:
 ```bash
 node -v
