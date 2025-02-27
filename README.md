@@ -51,8 +51,10 @@ UI will be accessible at http://localhost:3000/
 1. **Create Test Flow:** Users select predefined test cases like "Open Google" or "Search NHL" from a sidebar.
 2. **Drag and Chain:** The user drags the steps into a canvas area, chaining them together as needed.
 3. **Run Test:** The user presses the "Run Test" button, triggering the automated execution of the chained test cases through Playwright.
+4. **Clear Workspace:** The user presses the "Clear" button to remove all nodes and edges from the workspace
 
-https://github.com/user-attachments/assets/513b0c27-2f9c-4a0f-9fec-0c12681db6bc
+https://github.com/user-attachments/assets/4c8d5ed8-3a70-4173-920e-f5812f98ff18
+
 
 ## Authors
 
