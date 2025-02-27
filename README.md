@@ -56,7 +56,7 @@ https://github.com/user-attachments/assets/513b0c27-2f9c-4a0f-9fec-0c12681db6bc
 
 ## Authors
 
-- [@aghar11](https://github.com/aghar11)
+[Akarsh Gharge | @aghar11](https://github.com/aghar11)
 
 ## 🔗 Links
 
