@@ -19,10 +19,13 @@ This app is a proof of concept web application for end-to-end UI testing using P
 **Testing:** Playwright (for automated browser interactions)
 
 ## Deployment
+**Pre-Requisites**
+Must have [Node.js](https://nodejs.org/en/download) installed
 
 **Backend**
 ```bash
 cd backend
+npm install
 node server.js
 ```
 Backend server will be listening at http://localhost:8000
@@ -31,6 +34,7 @@ Backend server will be listening at http://localhost:8000
 
 ```bash
 cd ui
+npm install
 npm start
 ```
 UI will be accessible at http://localhost:3000/
