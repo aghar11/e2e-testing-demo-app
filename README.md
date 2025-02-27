@@ -10,6 +10,15 @@ This app is a proof of concept web application for end-to-end UI testing using P
 - **Execution of Test Cases:** Once a test flow is designed, users can click a button to run the entire sequence of test steps, automating UI interactions using Playwright.
 - **Dynamic Test Chains:** The app allows users to swap and customize individual test steps to build new test chains without any coding.
 
+## Usage/Examples
+
+1. **Create Test Flow:** Users select predefined test cases like "Open Google" or "Search NHL" from a sidebar.
+2. **Drag and Chain:** The user drags the steps into a canvas area, chaining them together as needed.
+3. **Run Test:** The user presses the "Run Test" button, triggering the automated execution of the chained test cases through Playwright.
+4. **Clear Workspace:** The user presses the "Clear" button to remove all nodes and edges from the workspace
+
+https://github.com/user-attachments/assets/4c8d5ed8-3a70-4173-920e-f5812f98ff18
+
 ## Tech Stack
 
 **Frontend:** React.js, React Flow (for creating and visualizing test flows)
@@ -45,16 +54,6 @@ npm install
 npm start
 ```
 UI will be accessible at http://localhost:3000/
-
-## Usage/Examples
-
-1. **Create Test Flow:** Users select predefined test cases like "Open Google" or "Search NHL" from a sidebar.
-2. **Drag and Chain:** The user drags the steps into a canvas area, chaining them together as needed.
-3. **Run Test:** The user presses the "Run Test" button, triggering the automated execution of the chained test cases through Playwright.
-4. **Clear Workspace:** The user presses the "Clear" button to remove all nodes and edges from the workspace
-
-https://github.com/user-attachments/assets/4c8d5ed8-3a70-4173-920e-f5812f98ff18
-
 
 ## Authors
 
