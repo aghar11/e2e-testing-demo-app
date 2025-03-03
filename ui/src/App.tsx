@@ -1,8 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import FlowEditor from './FlowEditor';
+import Workspace from './Workspace';
 
-const App = () => <FlowEditor/>;
+const App = () => <Workspace/>;
 
 export default App;
