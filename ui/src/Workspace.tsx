@@ -116,10 +116,10 @@ const Workspace = () => {
             });
 
             const data = await response.json();
-            console.log(data.message);
+            alert(data.message);
         } catch (error) {
-            console.error('Error starting Playwright Codegen:', error);
-            alert('Failed to start Playwright Codegen.');
+            console.error('Error generating test case:', error);
+            alert('Could not generate test case.');
         }
     }
 
