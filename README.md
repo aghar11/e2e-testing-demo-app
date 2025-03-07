@@ -30,29 +30,19 @@ https://github.com/user-attachments/assets/4c8d5ed8-3a70-4173-920e-f5812f98ff18
 ## Deployment
 **Pre-Requisites**
 
-Must have [Node.js](https://nodejs.org/en/download) installed
+Must have [Docker](https://www.docker.com/get-started/) installed and running
 
-Can verify Node is installed by:
+Can verify Node is installed and running by:
 ```bash
-node -v
-npm -v
+docker info
 ```
 
-**Backend**
+**Building the Application**
 ```bash
-cd backend
-npm install
-node server.js
+docker-compose up --build
 ```
 Backend server will be listening at http://localhost:8000
 
-**Client**
-
-```bash
-cd ui
-npm install
-npm start
-```
 UI will be accessible at http://localhost:3000/
 
 ## Authors
