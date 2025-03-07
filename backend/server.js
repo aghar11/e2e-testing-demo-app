@@ -21,7 +21,7 @@ app.get('/run-test', async (req, res) => {
     const { flow } = req.query; // Expecting a comma-separated list of function names
     const testFlow = flow ? flow.split(',') : [];
 
-    const browser = await chromium.launch({ headless: false });
+    const browser = await chromium.launch({ headless: true });
     const page = await browser.newPage();
 
     try {
