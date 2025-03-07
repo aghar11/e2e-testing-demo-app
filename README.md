@@ -32,7 +32,7 @@ https://github.com/user-attachments/assets/4c8d5ed8-3a70-4173-920e-f5812f98ff18
 
 Must have [Docker](https://www.docker.com/get-started/) installed and running
 
-Can verify Node is installed and running by:
+Can verify Docker is installed and running by:
 ```bash
 docker info
 ```
