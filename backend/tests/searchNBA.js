@@ -1,5 +1,6 @@
 const searchNBA = async (page) => {
-    console.log('Searching for NHL...');
+    console.log('Searching for NBA...');
+    await page.waitForTimeout(5000);
     await page.waitForSelector('textarea[name="q"]');
     await page.locator('textarea[name="q"]').fill('NBA');
     await page.waitForTimeout(2000);
