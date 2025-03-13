@@ -1,20 +1,44 @@
 const express = require('express');
 const cors = require('cors');
 const { chromium } = require('playwright');
-const openGoogle = require('./tests/openGoogle');
-const searchNHL= require('./tests/searchNHL');
-const searchNBA = require('./tests/searchNBA');
-const searchNFL = require('./tests/searchNFL');
+const fs = require('fs');
+const path = require('path');
+
+const TESTS_DIR = path.join(__dirname, './tests');
 
 const app = express();
 app.use(cors());
 
-const testFunctions = {
-    openGoogle,
-    searchNHL,
-    searchNBA,
-    searchNFL,
+// HELPER FUNCTIONS
+const getDirectoryStructure = (dir = TESTS_DIR) => {
+    const result = [];
+
+    fs.readdirSync(dir, { withFileTypes: true }).forEach((entry) => {
+        const fullPath = path.join(dir, entry.name);
+
+        if (entry.isDirectory()) {
+            const children = getDirectoryStructure(fullPath);
+            result.push( { id: fullPath, label: entry.name, children });
+        } else if (entry.isFile() && entry.name.endsWith('.test.js')) {
+            result.push({ id: fullPath, label: entry.name.replace('.test.js', '')})
+        }
+    });
+
+    return result;
 };
+
+
+// GET Request: /load-tests
+app.get('/load-tests', async (req, res) => {
+    try {
+        const testStructure = getDirectoryStructure();
+        console.log(testStructure);
+        res.json(testStructure);
+    } catch (error) {
+        console.error('Error reading test structure:', error);
+        res.status(500).json({ message: 'Failed to load test structure' });
+    }
+});
 
 // GET Request: /run-test
 app.get('/run-test', async (req, res) => {

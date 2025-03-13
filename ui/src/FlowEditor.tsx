@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import ReactFlow, {
     addEdge,
     Background,
@@ -11,6 +11,7 @@ import ReactFlow, {
     useEdgesState,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
+import { SimpleTreeView, TreeItem } from "@mui/x-tree-view";
 
 const initialNodes: Node[] = [];
 const initialEdges: Edge[] = [];
@@ -22,6 +23,15 @@ const FlowEditor = () => {
     const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
     const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
     const [nodeId, setNodeId] = useState(1);
+    const [testDirectory, setTestDirectory] = useState([]);
+
+    // Handle initial load of testDirectory
+    useEffect(() => {
+        fetch('http://localhost:8000/load-tests')
+            .then((res) => res.json())
+            .then((data) => setTestDirectory(data))
+            .catch((error) => console.error('Error loading test cases:', error));
+    }, []);
 
     // Handle dragging test cases onto the canvas
     const onDrop = useCallback((event: React.DragEvent) => {
@@ -72,10 +82,32 @@ const FlowEditor = () => {
         }
     };
 
+    const onDragStart = (event: any, node: any) => {
+        event.dataTransfer.setData('application/reactflow', node.label);
+    };
+
+    // Recursively render tree structure with draggable test cases
+    const renderTree = (nodes: any) => (
+        nodes.map((node: any) => (
+            <TreeItem
+                key={node.id}
+                itemId={node.id}
+                label={node.label}
+                draggable={!node.children} // Only allow test cases to be draggable
+                onDragStart={node.children ? undefined : (e) => onDragStart(e, node)}
+            >
+                {node.children ? renderTree(node.children) : null}
+            </TreeItem>
+        ))
+    );
+
     return (
         <div style={{ display: 'flex', height: '100vh' }}>
             <aside style={{ width: '200px', backgroundColor: '#f4f4f4', padding: '10px' }}>
                 <h3>Test Case Toolbox</h3>
+                <SimpleTreeView>
+                    {renderTree(testDirectory)}
+                </SimpleTreeView>
                 {testCases.map((test) => (
                     <div
                         key={test}
